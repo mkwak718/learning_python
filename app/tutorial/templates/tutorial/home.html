@@ -1,0 +1,85 @@
+
+{% extends 'tutorial/base.html' %}
+{% load django_bootstrap5 %}
+
+{% block title %}
+    MGA & RAFB
+{% endblock %}
+
+{% block content %}
+    
+
+   <!-- Marketing messaging and featurettes
+  ================================================== -->
+  <!-- Wrap the rest of the page in another container to center all the content. -->
+
+  <div class="container  mt-3 mb-5">
+
+    <div class="row">
+      <h2>Learning Python</h2>
+  </div>   
+  <div class="card p-2">
+      <div class="row pt-3 mb-3">    
+          <div class="col-md-3" >
+          </div>                   
+          <div class="col-md-6" >           
+              
+              <div class="row">
+                  <h1>Learning Python</h1> 
+
+                  <p>These learning materials are designed to support introductory programming courses 
+                      at Middle Georgia State University, but they can also provide introductions to these topics for anyone interested. 
+                      All are works in progress and are being expanded as time permits. They have been tested using the latest versions of Python.</p>
+                  <p>The development of these materials was supported by a new University System of Georgia initiative, 
+                      Affordable Learning Georgia (ALG), which focuses on reducing the costs of textbooks and the enhancement of GALILEO,
+                       Georgia’s Virtual Library and ALG’s parent initiative.
+                  </p>
+              </div>
+
+              <div class="row" style="display: flex;">
+                  <table class="table table-hover" style="font-size: 14px;">
+                      <thead class="table">
+                          <th>Modules </th><th>Edit </th>
+                      </thead>
+                      <tbody>
+                          {% for m in module_titles %}
+                          <tr>   
+                              <td> 
+                                  <a href="/tutorial/content/{{ m.id }}"> {{ m.title }} </a>                             
+                              </td>                  
+                              <td> 
+                                  <!--a href="/learning/python/edit/{{ m.id }}"> Edit </a-->                             
+                              </td>          
+                          </tr>
+                          {% endfor %}
+                      </tbody>
+                  </table>   
+              </div>
+              
+              <div class="row">
+                  <div class="col-sm-3">                        
+                  </div>
+                  <div class="col-sm-3">
+                      <a href="http://affordablelearninggeorgia.org/" target="_blank">
+                          <img src="https://www.affordablelearninggeorgia.org/assets/site/img/logo.svg" alt="Affordable Learning Georgia Logo" class="pull-right img-responsive" width="150px">
+                      </a>                       
+                  </div>
+                  <div class="col-sm-6">
+                      <small>
+                          Dr. Myungjae Kwak,Dr. Kevin Floyd,<br>
+                          Dr. Jonathan Jenkins, Dr. Joobum Kim,<br>
+                          Dr. Jongho Seol, Dr. Karim Feroz,<br>
+                          Ms. Catherine Eubanks, Mr. Kyle Macdonald,<br>
+                          and Ms. Soo Lee - 2024<br>
+                          &nbsp;<br>
+                          &nbsp;<br>
+                      </small>
+                  </div>
+              </div>
+          </div>  
+      </div>
+  </div>
+
+
+  </div><!-- /.container -->
+{% endblock %}

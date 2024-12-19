@@ -1,0 +1,64 @@
+
+{% extends 'tutorial/base.html' %}
+{% load django_bootstrap5 %}
+
+{% block title %}
+    School of Computing - Learning Python
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid mt-5">        
+
+    <div class="row flex-nowrap">
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-light">
+            {% include 'tutorial/python_menu.html' %}
+        </div>
+
+        <div class="col-md-8 py-3">
+
+            {{ module_content.content|safe }}
+                
+        </div>
+    </div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" 
+integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" 
+crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script type="text/javascript">
+  var editorOptions = {
+    mode: { name: 'python', version: 3, singleLineStringErrors: false },
+    lineNumbers: true,
+    matchBrackets: true
+  }
+  
+  $('.code-wrapper').each(function () {
+    var self = $(this)
+    var editor = CodeMirror.fromTextArea(self.find('.editor')[0], editorOptions)
+  
+    let csrftoken = '{{ csrf_token }}'
+  
+    let btn = $(this).find('.codesubmit')
+    let res = $(this).find('.result')
+  
+    btn.click(function () {
+      let code = editor.getValue()
+      $.ajax({
+        type: 'POST',
+        headers: { 'X-CSRFToken': csrftoken },
+        url: '/tutorial/codeexecajaxcall/',
+        data: {
+          code: code
+        },
+        success: function (data) {
+          res.text(data)
+        }
+      })
+    })
+  })
+</script>
+
+{% endblock %}

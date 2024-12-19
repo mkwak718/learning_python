@@ -1,0 +1,18 @@
+
+services:
+  app:
+    build:
+      context: .
+    command: >
+      bash -c "python manage.py migrate &&
+               python manage.py runserver 0.0.0.0:8000"
+    ports:
+      - 8000:8000
+    volumes:
+      - ./app:/app
+      - ./data/web:/vol/web
+    environment:
+      - DJANGO_SECRET_KEY=programmingtutorialsecretkey
+      - DJANGO_ALLOWED_HOSTS=127.0.0.1
+      - DJANGO_CSRF_TRUSTED_ORIGINS=http://127.0.0.1
+      - DJANGO_DEBUG=1

@@ -1,0 +1,43 @@
+{% extends 'tutorial/bootstrap.html' %}
+
+{% load django_bootstrap5 %}
+
+{% load static %}
+
+{% block bootstrap5_extra_head %}    
+
+    <meta name="theme-color" content="#7952b3">
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/codemirror.min.css" integrity="sha512-uf06llspW44/LZpHzHT6qBOIVODjWtv4MxCricRxkzvopAlSWnTf6hpZTFxuuZcuNE9CBQhqE0Seu1CoRk84nQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/codemirror.min.js" integrity="sha512-t5Lcu24FbQybGnoIbv1GXDx633tW0Hd4reBUx74EIq/2Q39FzskADNbjc605pQA9kkojC+8bRXhHKEXoKJs3rw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/addon/edit/matchbrackets.min.js" integrity="sha512-TKAAM4/TMGtdnRL3xqxukcysizlz2XB3h14u0EnEHdLbjpgYLvpquHchWQFs45se/+MLg6GhE0YIb9j4yYpx5g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/mode/python/python.min.js" integrity="sha512-XEzz9RdeooPMK28QnWdk+gR3nJtnNbqi+kVh8MkPiOeJTtJSLR8OSB8sX1+gI2L4DbDDPgORcB4qWheoHrJm5g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+{% endblock %} 
+
+{% block bootstrap5_content %}
+
+  {% include 'tutorial/navbar.html' %}
+  <main>
+    {% block content %}(no content){% endblock %}
+
+
+  </main>
+  <!-- FOOTER -->
+  {% include 'tutorial/footer.html' %}
+{% endblock %}

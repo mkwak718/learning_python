@@ -1,0 +1,21 @@
+# Create a django project
+docker-compose run --rm app bash -c "django-admin startproject app ."
+
+# Create an app in django project
+docker-compose run --rm app bash -c "python manage.py startapp tutorial"
+
+# Make migrations of models defined in django apps
+# Migrations are Django’s way of propagating changes you make to models (adding a field, deleting a model, etc.) into the database schema. 
+docker-compose run --rm app bash -c "python manage.py makemigrations"
+
+# Apply migrations
+docker-compose run --rm app bash -c "python manage.py migrate"
+
+# Create superuser that can access the admin site
+docker-compose run --rm app bash -c "python manage.py createsuperuser"
+
+# Build the images defined in the docker-compose.yml file
+docker-compose build
+
+# Build and start all the services defined in the docker-compose.yml file.
+docker-compose up
